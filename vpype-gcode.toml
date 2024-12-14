@@ -1,0 +1,35 @@
+# terrapen gecode configuration
+
+# vpype --config vpype-gcode.toml read <input.svg> gwrite --profile terrapen-servo-bottom-left <output.gcode>
+[gwrite.terrapen-servo-bottom-left]
+document_start = "G21\nG17\nG40\nG90\nG1 F5000\n"
+segment_first = "G0 X{x:.4f}Y{y:.4f}\nG0 Z-12\nG4 P0.1\n"
+segment = "G1 X{x:.4f}Y{y:.4f}\n"
+segment_last = "G1 X{x:.4f}Y{y:.4f}\nG0 Z12\nG4 P0.1\n"
+document_end = "G0 X0Y0\n"
+unit = "mm"
+vertical_flip = true
+info = "The home position must be set on the bottom left corner of the page."
+
+# vpype --config vpype-gcode.toml read <input.svg> gwrite --profile terrapen-bottom-left <output.gcode>
+[gwrite.terrapen-bottom-left]
+document_start = "G21\nG17\nG40\nG90\nG1 F5000\n"
+segment_first = "G0 X{x:.4f}Y{y:.4f}\nM3 S1\nG4 P0.1\n"
+segment = "G1 X{x:.4f}Y{y:.4f}\n"
+segment_last = "G1 X{x:.4f}Y{y:.4f}\nM3 S0\nG4 P0.1\n"
+document_end = "G0 X0Y0\n"
+unit = "mm"
+vertical_flip = true
+info = "The home position must be set on the bottom left corner of the page."
+
+# vpype --config vpype-gcode.toml read <input.svg> gwrite --profile terrapen-top-left <output.gcode>
+[gwrite.terrapen-top-left]
+document_start = "G21\nG17\nG40\nG90\nG1 F5000\n"
+segment_first = "G0 X{x:.4f}Y-{y:.4f}\nM3 S1\nG4 P0.1\n"
+segment = "G1 X{x:.4f}Y-{y:.4f}\n"
+segment_last = "G1 X{x:.4f}Y-{y:.4f}\nM3 S0\nG4 P0.1\n"
+document_end = "G0 X0Y0\n"
+unit = "mm"
+horizontal_flip = false
+vertical_flip = false
+info = "The home position must be set on the top left corner of the page."
